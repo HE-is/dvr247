@@ -14,6 +14,8 @@ The "saving a cut" just stops the buffer and saves a cut of the last n seconds o
 
 Xinput is threaded into it's own virtual pty, loops to check for the quit/refresh/save keys.
 
+You may need to change the ffmpeg command to match your pulseaudio/alsa settings... as you are 4k res I think, and the loopback for recording sound will be different.
+
 Oh and I'm using pkill to stop the ffmpeg video buffer... I tried messing around with echoing the "q" key to ffmpeg, but I stopped as I wasn't getting anywhere. (example: `echo "s" > /dev/pts/11`)
 
 Hopefully this is useful for you!

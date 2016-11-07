@@ -14,6 +14,6 @@ The "saving a cut" just stops the buffer and saves a cut of the last n seconds o
 
 Xinput is threaded into it's own virtual pty, loops to check for the quit/refresh/save keys.
 
-Oh and I'm using pkill to stop the ffmpeg video buffer... I tried messing around with echoing the "q" key to ffmpeg, but I stopped as I wasn't getting anywhere. (example: echo "s" > /dev/pts/11)
+Oh and I'm using pkill to stop the ffmpeg video buffer... I tried messing around with echoing the "q" key to ffmpeg, but I stopped as I wasn't getting anywhere. (example: `echo "s" > /dev/pts/11`)
 
 Hopefully this is useful for you!

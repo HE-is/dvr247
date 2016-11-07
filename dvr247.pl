@@ -26,6 +26,7 @@ use POSIX qw(strftime);
 
 my $savecutkey = 82; # -numlock minus- (on my keyboard)
 my $exitkey = 63; # -numlock asterisk- (on my keyboard)
+my $refreshkey = 106; # -numlock forwardslash- (on my keyboard)
 my $length = 0;
 my $sn = "";
 my $vidstart = 0;
@@ -90,9 +91,19 @@ sub cap()
 				$tty->close;
 				system("pkill ffmpeg");
 				sleep(1);
+				print "\nNice plays! Farewell.\n";
 				exit(0);
 			}
-			if ($line =~ /$savecutkey/){
+			elsif ($line =~ /$refreshkey/){
+				system("pkill ffmpeg");
+				system("rm", "$screencap");
+				sleep(1);
+				$| = 1; # Set unbuffered output.
+				open( my $scrncap, "| ffmpeg -y -f x11grab -s 1920x1080 -r 25 -i \$DISPLAY -f pulse -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor -c:v libx264 -b:v 400k -bufsize 2000k -s 1280x720 $screencap > /dev/null 2>&1 &" ) or die "cannot start mp3 player: $!";
+				print "\n...buffer refreshed...\n";
+			}
+
+			elsif ($line =~ /$savecutkey/){
 				$length = time() - $vidstart;
 				if ($length > $saveduration){
 					close $scrncap;

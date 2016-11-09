@@ -76,7 +76,7 @@ $tty->spawn("xinput test $id");
 sub cap()
 {
 	$| = 1; # Set unbuffered output.
-	open( my $scrncap, "| ffmpeg -y -f x11grab -s 1920x1080 -r 25 -i \$DISPLAY -f pulse -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor -c:v libx264 -b:v 400k -bufsize 2000k -s 1280x720 $screencap > /dev/null 2>&1 &" ) or die "cannot start mp3 player: $!";
+	open( my $scrncap, "| ffmpeg -f x11grab -s 1920x1080 -i \$DISPLAY -f pulse -i alsa_output.pci-0000_00_1b.0.analog-stereo.monitor -c:v libx264 -b:v 2000k -bufsize 6000k -y -r 30 $screencap > /dev/null 2>&1 &" ) or die "cannot start mp3 player: $!";
 	print "\nBuffer recording...\n";
 	if($vidstart eq 0){
 		$vidstart = time();

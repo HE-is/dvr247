@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# dvr247.pl - Caleb
+# dvr247.pl - HEis
 # Used to constantly record a "screencast" in a buffer, which you can hit a
 # desired key to save the last n seconds 
 # YES, this is uber messy, with many mistakes and ineficiencies
